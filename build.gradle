@@ -17,6 +17,8 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework.boot:spring-boot-devtools'
 }
 
 task buildReactApp(type: NodeTask, dependsOn: 'npmInstall') {
@@ -32,7 +34,7 @@ processResources.dependsOn 'buildReactApp'
 clean.delete << file('node_modules')
 clean.delete << file('src/main/resources/static/dist')
 
-
+// https://dzone.com/articles/integrating-java-and-npm-builds-using-gradle
 node {
     /* gradle-node-plugin configuration
        https://github.com/srs/gradle-node-plugin/blob/master/docs/node.md

@@ -20,7 +20,7 @@ dependencies {
 }
 
 task buildReactApp(type: NodeTask, dependsOn: 'npmInstall') {
-    script = project.file('node_modules/.bin/webpack')
+    script = project.file('node_modules/webpack/bin/webpack.js')
     args = [
             '--mode', 'development',
             '--entry', './src/main/webapp/javascript/Main.jsx',
@@ -31,3 +31,16 @@ task buildReactApp(type: NodeTask, dependsOn: 'npmInstall') {
 processResources.dependsOn 'buildReactApp'
 clean.delete << file('node_modules')
 clean.delete << file('src/main/resources/static/dist')
+
+
+node {
+    /* gradle-node-plugin configuration
+       https://github.com/srs/gradle-node-plugin/blob/master/docs/node.md
+       Task name pattern:
+       ./gradlew npm_<command> Executes an NPM command.
+    */
+
+  // If true, it will download node using above parameters.
+  // If false, it will try to use globally installed node.
+  download = true
+}

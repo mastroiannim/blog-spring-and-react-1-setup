@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import FriendList from './FriendList';
+import Me from './Me';
 import '../css/Main.css';
 
 class Main extends Component {
@@ -13,6 +14,22 @@ class Main extends Component {
     
     componentDidMount() {
         this.fetchFriends();
+        this.ferchMe();
+    }
+
+    ferchMe() {
+        fetch("/api/me")
+        .then(res => res.json())
+        .then(
+            (response) => {
+                this.setState({
+                    me: response.name
+                });
+            },
+            (error) => {
+                alert(error);
+            }
+            )
     }
     
     fetchFriends() {
@@ -53,7 +70,7 @@ class Main extends Component {
             return (
                 <div id="main">
                 <p>Get your greeting <a href="/greeting">here</a></p>
-                <h1>My Best Friends</h1>
+                <h1> <Me me={this.state.me}/> Best Friends</h1>
                 <FriendList friends={this.state.friends}/>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                 <input id="name" name="name" type="text" placeholder="Enter name"/>

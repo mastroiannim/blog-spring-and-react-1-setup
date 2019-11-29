@@ -70,7 +70,7 @@ class Main extends Component {
             return (
                 <div id="main">
                 <p>Get your greeting <a href="/greeting">here</a></p>
-                <h1> <Me me={this.state.me}/> Best Friends</h1>
+                <h1> <Me me={this.state.me}/></h1>
                 <FriendList friends={this.state.friends}/>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                 <input id="name" name="name" type="text" placeholder="Enter name"/>

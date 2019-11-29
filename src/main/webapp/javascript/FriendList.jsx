@@ -9,7 +9,7 @@ class FriendList extends Component {
             <ul id="friend-list">
             {this.props.friends.map(friend => (
                 <li key={friend.id}>
-                {friend.name}
+                <a href={"/greeting?name=" +friend.name}>{friend.name}</a>
                 </li>
                 ))}
                 </ul>

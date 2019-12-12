@@ -56,13 +56,13 @@ public class YoutubeApiServiceImpl implements YoutubeApiService {
 
 
     @Override
-    @Async("threadPoolTaskExecutor")
     public String crawlYoutubeVideoInfo(String keyword,long pageToCrawl) {
         getYoutubeVideoList(keyword,pageToCrawl);
         return "Youtube video information is loading...";
     }
 
     @Transactional
+    @Async("threadPoolTaskExecutor")
     public List<Object> getYoutubeVideoList(String queryTerm,long pageToCrawl) {
 
         try {

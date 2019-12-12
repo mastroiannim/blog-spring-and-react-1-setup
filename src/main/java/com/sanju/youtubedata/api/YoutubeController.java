@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,8 +33,10 @@ public class YoutubeController {
     YoutubeVideoStatService youtubeVideoStatService;
 
     @GetMapping(value = "crawl/{keyword}/{pageToCrawl}")
+    @ResponseBody
     public String crawlVideo(@PathVariable String keyword, @PathVariable long pageToCrawl) {
-        return youtubeApiService.crawlYoutubeVideoInfo(keyword,pageToCrawl);
+        youtubeApiService.crawlYoutubeVideoInfo(keyword,pageToCrawl);
+        return "Youtube video information is loaded!";
     }
 
     @GetMapping

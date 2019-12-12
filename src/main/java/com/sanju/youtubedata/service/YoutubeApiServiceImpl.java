@@ -69,9 +69,10 @@ public class YoutubeApiServiceImpl implements YoutubeApiService {
 
             youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
                 public void initialize(HttpRequest request) throws IOException {
-                }
-            }).setApplicationName("YoutubeVideoInfo")
-                    .setYouTubeRequestInitializer(new YouTubeRequestInitializer(env.getProperty("youtube.apikey"))).build();
+                }})
+                .setApplicationName("YoutubeVideoInfo")
+                .setYouTubeRequestInitializer(new YouTubeRequestInitializer(env.getProperty("youtube.apikey")))
+                .build();
 
             YouTube.Search.List search = youtube.search().list("id,snippet");
 

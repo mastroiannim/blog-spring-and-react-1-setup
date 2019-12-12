@@ -35,6 +35,7 @@ public class YoutubeController {
     @GetMapping(value = "crawl/{keyword}/{pageToCrawl}")
     @ResponseBody
     public String crawlVideo(@PathVariable String keyword, @PathVariable long pageToCrawl) {
+        //https://www.googleapis.com/youtube/v3/search?part=snippet,id&q=atalanta&key=AIzaSyC7RsA8sAaLOnt-Vi96NhZ0sbbM_EgrB5g
         youtubeApiService.crawlYoutubeVideoInfo(keyword,pageToCrawl);
         return "Youtube video information is loaded!";
     }

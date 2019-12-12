@@ -38,3 +38,6 @@ node_modules/
 # Output
 src/main/resources/static/dist/
 
+# MAC
+.DS_Store
+

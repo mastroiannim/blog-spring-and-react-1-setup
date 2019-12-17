@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import FriendList from './FriendList';
 import Me from './Me';
+import YoutubeVideoList from './YoutubeVideoList';
 import '../css/Main.css';
 
 class Main extends Component {
@@ -15,6 +16,23 @@ class Main extends Component {
     componentDidMount() {
         this.fetchFriends();
         this.ferchMe();
+        this.fetchVideos();
+    }
+
+    fetchVideos(){
+        fetch("/youtube")
+        .then(res => res.json())
+        .then(
+            (response) => {
+                //console.log(response);
+                this.setState({
+                    videos: response
+                });
+            },
+            (error) => {
+                alert(error);
+            }
+            )
     }
 
     ferchMe() {
@@ -69,13 +87,14 @@ class Main extends Component {
         render() {
             return (
                 <div id="main">
-                <p>Get your greeting <a href="/greeting">here</a></p>
-                <h1> <Me me={this.state.me}/></h1>
-                <FriendList friends={this.state.friends}/>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                <input id="name" name="name" type="text" placeholder="Enter name"/>
-                <button type='submit'>Create</button>
-                </form>
+                    <p>Get your greeting <a href="/greeting">here</a></p>
+                    <h1> <Me me={this.state.me}/></h1>
+                    <FriendList friends={this.state.friends}/>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
+                        <input id="name" name="name" type="text" placeholder="Enter name"/>
+                        <button type='submit'>Create</button>
+                    </form>
+                    <YoutubeVideoList videos={this.state.videos}/>
                 </div>
                 );
             }

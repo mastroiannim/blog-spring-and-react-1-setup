@@ -75,3 +75,6 @@ node {
   // If false, it will try to use globally installed node.
   download = true
 }
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean

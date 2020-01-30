@@ -16,12 +16,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-devtools'
-    compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.2.0.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.0.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.2.0.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-devtools:2.2.0.RELEASE'
+    implementation 'org.projectlombok:lombok:1.18.8'
+    implementation 'com.h2database:h2:1.4.x'
     annotationProcessor 'org.projectlombok:lombok' //for VS Code add extension
 
     // https://mvnrepository.com/artifact/com.google.api-client/google-api-client

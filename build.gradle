@@ -79,34 +79,3 @@ node {
 
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
-
-task generatePom {
-    doLast {
-        pom {
-            project {
-                groupId project.group.toString()
-                artifactId 'awesome-app'
-                version version
-
-                inceptionYear '2018'
-                licenses {
-                    license {
-                        name 'MIT License'
-                        url 'MIT'
-                        distribution 'repo'
-                    }
-                }
-            }
-        }.withXml {
-            asNode().appendNode('build').appendNode('plugins').appendNode('plugin').with {
-                appendNode('groupId', 'org.apache.maven.plugins')
-                appendNode('artifactId', 'maven-compiler-plugin')
-                appendNode('version', '3.6.1')
-                appendNode('configuration').with {
-                    appendNode('source', 1.7)
-                    appendNode('target', 1.7)
-                }
-            }
-        }.writeTo("$rootDir/pom.xml")
-    }
-}

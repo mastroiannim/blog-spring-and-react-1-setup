@@ -97,6 +97,11 @@ task generatePom {
                     }
                 }
             }
+        }.withXml {
+            asNode().appendNode('properties').with {
+                appendNode('maven.compiler.source', 1.7)
+                appendNode('maven.compiler.target', 1.7)
+            }
         }.writeTo("$rootDir/pom.xml")
     }
 }

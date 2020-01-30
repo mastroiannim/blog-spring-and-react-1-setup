@@ -98,9 +98,14 @@ task generatePom {
                 }
             }
         }.withXml {
-            asNode().appendNode('properties').with {
-                appendNode('maven.compiler.source', 1.7)
-                appendNode('maven.compiler.target', 1.7)
+            asNode().appendNode('build').appendNode('plugins').appendNode('plugin').with {
+                appendNode('groupId', 'org.apache.maven.plugins')
+                appendNode('artifactId', 'maven-compiler-plugin')
+                appendNode('version', '3.6.1')
+                appendNode('configuration').with {
+                    appendNode('source', 1.7)
+                    appendNode('target', 1.7)
+                }
             }
         }.writeTo("$rootDir/pom.xml")
     }
